@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.html"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@smartbin-database-url",
+    "PUSHER_APP_ID": "@smartbin-pusher-app-id",
+    "PUSHER_KEY": "@smartbin-pusher-key",
+    "PUSHER_SECRET": "@smartbin-pusher-secret",
+    "PUSHER_CLUSTER": "@smartbin-pusher-cluster",
+    "CLERK_PUBLISHABLE_KEY": "@smartbin-clerk-publishable-key"
+  }
+}
